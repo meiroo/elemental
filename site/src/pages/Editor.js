@@ -20,8 +20,8 @@ var BasicLayout = React.createClass({
       cols: 6,
       isDraggable: true,
       isResizable: true,
-      autoResize:true,
-      useCSSTransforms:true,
+      autoResize:false,
+      useCSSTransforms:false,
     };
   },
 
@@ -36,7 +36,7 @@ var BasicLayout = React.createClass({
 
     var rows = [];
     for (var i=0; i < this.props.items; i++) {
-        rows.push(<TextCard key={i}><span className="text">{i}:111111111111122222222222233333333333334444444445555555555566666666666677777777777777778888888888888</span></TextCard>);
+        rows.push(<TextCard key={i}><span>111111111111122222222222233333333333334444444445555555555566666666666677777777777777778888888888888</span></TextCard>);
     }
     return rows;
   },
