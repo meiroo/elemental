@@ -2,7 +2,7 @@
 
 const React = require('react');
 const ReactGridLayout = require('react-grid-layout');
-const _ = require('lodash');
+var ResponsiveReactGridLayout = require('react-grid-layout').Responsive;
 
 const { TextCard ,Alert, Card, Col, Container, FormField, FormInput, InputGroup, Pagination, Pill, Row, Table } = require('elemental');
 
@@ -20,7 +20,8 @@ var BasicLayout = React.createClass({
       cols: 6,
       isDraggable: true,
       isResizable: true,
-      autoResize:true
+      autoResize:true,
+      useCSSTransforms:true,
     };
   },
 
@@ -32,35 +33,39 @@ var BasicLayout = React.createClass({
   },
 
   generateDOM() {
-    return _.map(_.range(this.props.items), function(i) {
-      return (<TextCard key={i}><span className="text">{i}:111111111111122222222222233333333333334444444445555555555566666666666677777777777777778888888888888</span></TextCard>);
-    });
+
+    var rows = [];
+    for (var i=0; i < this.props.items; i++) {
+        rows.push(<TextCard key={i}><span className="text">{i}:111111111111122222222222233333333333334444444445555555555566666666666677777777777777778888888888888</span></TextCard>);
+    }
+    return rows;
   },
 
   generateLayout() {
-    var p = this.props;
-    return _.map(new Array(p.items), function(item, i) {
-      var y = _.result(p, 'y') || Math.ceil(Math.random() * 4) + 1;
-      return {x: i * 2 % 12, y: Math.floor(i / 6) * y, w: 2, h: y, i: i};
-    });
+    var rows = [];
+    for (var i=0; i < this.props.items; i++) {
+        var y = 4;
+        rows.push({x: i * 2 % 12, y: Math.floor(i / 6) * y, w: 2, h: y, i: i});
+    }
+    return rows;
   },
 
   //onLayoutChange: function(layout) {
-    //this.props.onLayoutChange(layout);
+  //  this.props.onLayoutChange(layout);
   //},
 
   render() {
   	let page_style = {
   		backgroundColor: 'rgba(210, 230, 159, 0.0745098)',
-		marginLeft:'50px',
-		marginRight:'auto',
-		paddingLeft:'20px',
-		paddingRight:'20px',
-		maxWidth:'800px'
-	};
+  		marginLeft:'50px',
+  		marginRight:'auto',
+  		paddingLeft:'20px',
+  		paddingRight:'20px',
+  		maxWidth:'800px'
+  	};
 
     return (
-      <div {...this.props} style={Object.assign(page_style, this.props.style)}>
+      <div id="content" {...this.props} style={Object.assign(page_style, this.props.style)}>
       	<ReactGridLayout layout={this.state.layout} onLayoutChange={this.onLayoutChange}
           {...this.props}>
           {this.generateDOM()}
