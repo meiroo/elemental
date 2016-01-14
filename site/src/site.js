@@ -4,6 +4,7 @@ import { Router, Route, Link, IndexRoute } from'react-router';
 import { createHistory, useBasename } from 'history';
 
 const NavItems = [
+	{ value: '/editor',      label: 'Editor' },
 	{ value: '/css',         label: 'CSS' },
 	{ value: '/grid',        label: 'Grid' },
 	{ value: '/buttons',     label: 'Buttons' },
@@ -100,6 +101,7 @@ ReactDOM.render(
 		<Route path="/" component={App}>
 			<IndexRoute component={require('./pages/Home')} />
 			<Route path="home" component={require('./pages/Home')} />
+			<Route path="editor" component={require('./pages/Editor')} />
 			<Route path="css" component={require('./pages/CSS')} />
 			<Route path="grid" component={require('./pages/Grid')} />
 			<Route path="buttons" component={require('./pages/Buttons')} />
