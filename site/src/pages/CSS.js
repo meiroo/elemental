@@ -86,7 +86,7 @@ var CSSExamples = React.createClass({
 			<Container maxWidth={800} className="demo-container">
 				<h1>CSS</h1>
 
-				<h2>Typography</h2>
+				<h2 id="section1">Typography</h2>
 				<div className="code-example">
 					<div className="code-example__example">
 						<h1>h.1 Elemental heading</h1>
@@ -112,7 +112,7 @@ var CSSExamples = React.createClass({
 					</ExampleSource>
 				</div>
 
-				<h2>Tables</h2>
+				<h2 id="section2">Tables</h2>
 				<div className="code-example">
 					<div className="code-example__example">
 						<Table>
