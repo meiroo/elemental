@@ -1,8 +1,6 @@
 /* eslint no-script-url: 0 */
 
 const React = require('react');
-const ReactGridLayout = require('react-grid-layout');
-var ResponsiveReactGridLayout = require('react-grid-layout').Responsive;
 
 const { TextCard ,Alert, Card, Col, Container, FormField, FormInput, InputGroup, Pagination, Pill, Row, Table } = require('elemental');
 
@@ -28,7 +26,7 @@ var BasicLayout = React.createClass({
     let page_style = {
   	};
     for (var i=0; i < this.props.items; i++) {
-        rows.push(<TextCard  style={Object.assign(page_style, this.props.style)} key={i}><span>111111111111122222222222233333333333334444444445555555555566666666666677777777777777778888888888888</span></TextCard>);
+        rows.push(<TextCard  style={Object.assign(page_style, this.props.style)} key={i}>111111111111122222222222233333333333334444444445555555555566666666666677777777777777778888888888888</TextCard>);
     }
     return rows;
   },

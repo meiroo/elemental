@@ -32,14 +32,14 @@ module.exports = React.createClass({
 		};
 
 		var renderEle;
-		if(true || this.state.hover){
-			renderEle = <Glyph icon="pencil" style={Object.assign(style, {top:'125px'})}/>;
+		if(this.state.hover){
+			renderEle = <div style={{position:'absolute',bottom:'-30px'}}><Glyph icon="pencil"/></div>;
 		}else{
 			renderEle = null;
 		}
 		return <ResizableAndMovable
-         start={{x:20, y: 20, width: 200, height: 200}}
-         customStyle={{background:"#fff", textAlign:"center", paddingTop: '20px'}}
+         start={{x:20, y: 20, width: 200, height: 220}}
+         customStyle={{background:"#fff", textAlign:"center"}}
          minWidth={200}
          minHeight={200}
          maxWidth={300}
