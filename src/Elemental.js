@@ -5,6 +5,7 @@ exports.ButtonGroup = require('./components/ButtonGroup');
 exports.Checkbox = require('./components/Checkbox');
 exports.Card = require('./components/Card');
 exports.TextCard = require('./components/TextCard');
+exports.ResizableAndMovable = require('./components/ResizableAndMovable');
 exports.Col = require('./components/Col');
 exports.Container = require('./components/Container');
 exports.Dropdown = require('./components/Dropdown');

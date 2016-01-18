@@ -8,14 +8,11 @@ const { TextCard ,Alert, Card, Col, Container, FormField, FormInput, InputGroup,
 
 var BasicLayout = React.createClass({
 
-  propTypes: {
-    //onLayoutChange: React.PropTypes.func.isRequired
-  },
 
   getDefaultProps() {
     return {
       className: "layout",
-      items: 3,
+      items: 5,
       rowHeight: 30,
       cols: 6,
       isDraggable: true,
@@ -25,34 +22,16 @@ var BasicLayout = React.createClass({
     };
   },
 
-  getInitialState() {
-    var layout = this.generateLayout();
-    return {
-      layout: layout
-    };
-  },
-
   generateDOM() {
 
     var rows = [];
+    let page_style = {
+  	};
     for (var i=0; i < this.props.items; i++) {
-        rows.push(<TextCard key={i}><span>111111111111122222222222233333333333334444444445555555555566666666666677777777777777778888888888888</span></TextCard>);
+        rows.push(<TextCard  style={Object.assign(page_style, this.props.style)} key={i}><span>111111111111122222222222233333333333334444444445555555555566666666666677777777777777778888888888888</span></TextCard>);
     }
     return rows;
   },
-
-  generateLayout() {
-    var rows = [];
-    for (var i=0; i < this.props.items; i++) {
-        var y = 4;
-        rows.push({x: i * 2 % 12, y: Math.floor(i / 6) * y, w: 2, h: y, i: i});
-    }
-    return rows;
-  },
-
-  //onLayoutChange: function(layout) {
-  //  this.props.onLayoutChange(layout);
-  //},
 
   render() {
   	let page_style = {
@@ -66,10 +45,7 @@ var BasicLayout = React.createClass({
 
     return (
       <div id="content" {...this.props} style={Object.assign(page_style, this.props.style)}>
-      	<ReactGridLayout layout={this.state.layout} onLayoutChange={this.onLayoutChange}
-          {...this.props}>
           {this.generateDOM()}
-        </ReactGridLayout>
       </div>
     );
   }
