@@ -1,7 +1,7 @@
 var React = require('react');
 import E from '../constants';
 var ResizableAndMovable = require('./ResizableAndMovable');
-
+var Glyph = require('./Glyph');
 module.exports = React.createClass({
 	displayName: 'TextCard',
 	propTypes: {
@@ -30,6 +30,13 @@ module.exports = React.createClass({
 			height:'100%',
 			'overflow':'hidden',
 		};
+
+		var renderEle;
+		if(true || this.state.hover){
+			renderEle = <Glyph icon="pencil" style={Object.assign(style, {top:'125px'})}/>;
+		}else{
+			renderEle = null;
+		}
 		return <ResizableAndMovable
          start={{x:20, y: 20, width: 200, height: 200}}
          customStyle={{background:"#fff", textAlign:"center", paddingTop: '20px'}}
@@ -46,7 +53,11 @@ module.exports = React.createClass({
            console.log(e);
          }}
          onDragStop={() => console.log('drag stop')} >
-        <div {...this.props} onMouseEnter={this.mouseOver} onMouseLeave={this.mouseOut} style={Object.assign(style, this.props.style)} />
+        <div {...this.props} onMouseEnter={this.mouseOver} onMouseLeave={this.mouseOut} style={Object.assign(style, this.props.style)}>
+			{this.props.children}
+        	{renderEle}
+        </div>
+        
       </ResizableAndMovable>
 		 
 	},
