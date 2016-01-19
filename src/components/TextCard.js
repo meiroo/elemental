@@ -19,6 +19,9 @@ module.exports = React.createClass({
     mouseOut: function () {
         this.setState({hover: false});
     },
+    onEditClick:function(){
+    	alert('edit');
+    },
 	render () {
 		let style = {
 			backgroundColor: this.state.hover?'rgba(250, 250, 250, 0.0745098)':'white',
@@ -32,13 +35,16 @@ module.exports = React.createClass({
 		};
 
 		var renderEle;
-		if(this.state.hover){
-			renderEle = <div style={{position:'absolute',bottom:'-30px'}}><Glyph icon="pencil"/></div>;
+		if(true || this.state.hover){
+			renderEle = <div style={{backgroundColor:'rgba(250, 150, 50, 0.8)',position:'absolute',textAlign:'right',bottom:'0px',left:'0px',height:'25px',width:'100%'}}>
+			<span onClick={ this.onEditClick  } style={{cursor:'default',marginRight:'10px'}}><Glyph icon="pencil"/></span>
+			<span onClick={ this.props.cloneHandler } style={{cursor:'copy',marginRight:'10px'}}><Glyph icon="diff-added"/></span>
+			</div>;
 		}else{
 			renderEle = null;
 		}
 		return <ResizableAndMovable
-         start={{x:20, y: 20, width: 200, height: 220}}
+         start={{x:20, y: 20, width: 200, height: 200}}
          customStyle={{background:"#fff", textAlign:"center"}}
          minWidth={200}
          minHeight={200}
