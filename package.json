@@ -32,7 +32,8 @@
     "tape": "^4.2.0",
     "teaspoon": "^5.0.1",
     "react-draggable": "git://github.com/bokuweb/react-draggable.git",
-    "react-resizable-box": "^0.1.7"
+    "react-resizable-box": "^0.1.7",
+    "react-quill":"0.3.0"
   },
   "peerDependencies": {
     "react": "^0.14.0",

@@ -5,7 +5,6 @@ var Glyph = require('./Glyph');
 module.exports = React.createClass({
 	displayName: 'TextCard',
 	propTypes: {
-		children: React.PropTypes.node.isRequired,
 		style: React.PropTypes.object,
 	},
 	getInitialState: function () {
@@ -19,9 +18,6 @@ module.exports = React.createClass({
     mouseOut: function () {
         this.setState({hover: false});
     },
-    onEditClick:function(){
-    	alert('edit');
-    },
 	render () {
 		let style = {
 			backgroundColor: this.state.hover?'rgba(250, 250, 250, 0.0745098)':'white',
@@ -33,12 +29,13 @@ module.exports = React.createClass({
 			height:'100%',
 			'overflow':'hidden',
 		};
-
+			
 		var renderEle;
 		if(true || this.state.hover){
 			renderEle = <div style={{backgroundColor:'rgba(250, 150, 50, 0.8)',position:'absolute',textAlign:'right',bottom:'0px',left:'0px',height:'25px',width:'100%'}}>
-			<span onClick={ this.onEditClick  } style={{cursor:'default',marginRight:'10px'}}><Glyph icon="pencil"/></span>
-			<span onClick={ this.props.cloneHandler } style={{cursor:'copy',marginRight:'10px'}}><Glyph icon="diff-added"/></span>
+			<span onClick={ this.props.editHandler.bind(null,this.props.id,this)   } style={{cursor:'default',marginRight:'10px'}}><Glyph icon="pencil"/></span>
+			<span onClick={ this.props.cloneHandler.bind(null,this.props.id,this) } style={{cursor:'copy',marginRight:'10px'}}><Glyph icon="diff-added"/></span>
+			<span onClick={ this.props.deleteHandler.bind(null,this.props.id,this) } style={{cursor:'default',marginRight:'10px'}}><Glyph icon="trashcan"/></span>
 			</div>;
 		}else{
 			renderEle = null;
@@ -55,12 +52,12 @@ module.exports = React.createClass({
          onResizeStop={size => console.log(`resize stop width=${size.width}, height=${size.height}`)}
          onDragStart={() => console.log('drag start')}
          onDrag={(e, ui) => {
-           console.dir(ui);
-           console.log(e);
+           //console.dir(ui);
+           //console.log(e);
          }}
          onDragStop={() => console.log('drag stop')} >
         <div {...this.props} onMouseEnter={this.mouseOver} onMouseLeave={this.mouseOut} style={Object.assign(style, this.props.style)}>
-			{this.props.children}
+			{{__html: this.props.dom}}
         	{renderEle}
         </div>
         

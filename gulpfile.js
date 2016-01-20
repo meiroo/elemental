@@ -32,6 +32,7 @@ var taskConfig = {
 			'images/*',
 			'index.html',
 			'prism.css',
+			'quill.css',
 			'prism.js'
 		],
 		scripts: [

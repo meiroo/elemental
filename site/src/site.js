@@ -5,8 +5,7 @@ import { createHistory, useBasename } from 'history';
 
 const NavItems = [
 	{ value: '/editor',      label: 'Editor' },
-	{ value: '/css#section1',         label: 'CSS1' },
-	{ value: '/css#section2',         label: 'CSS2' },
+	{ value: '/css',         label: 'CSS' },
 	{ value: '/grid',        label: 'Grid' },
 	{ value: '/buttons',     label: 'Buttons' },
 	{ value: '/glyphs',      label: 'Glyphs' },
