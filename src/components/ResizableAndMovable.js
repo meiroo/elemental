@@ -35,6 +35,7 @@ export default class ResizableAndMovable extends Component {
   onDragStop(e, ui) {
     if (this.isResizing) return;
     this.props.onDragStop(e, ui);
+    //console.log(ui.position);
   }
 
   render() {
@@ -50,17 +51,17 @@ export default class ResizableAndMovable extends Component {
            zIndex} = this.props;
     return (
       <Draggable
+         grid={[5, 5]}
+         bounds="parent"
          axis="both"
          zIndex={zIndex}
          start={{x:start.x, y:start.y}}
-         disabled={!this.state.isDraggable}
+         disabled={!this.state.isDraggable || this.props.preview}
          onStart={this.onDragStart.bind(this)}
          onDrag={this.onDrag.bind(this)}
          onStop={this.onDragStop.bind(this)} >
         <div style={{
-               width:`${start.width}px`,
-               height:`${start.height}px`,
-               cursor: "move",
+               cursor: this.props.preview? "default":"move",
                position:'absolute'
              }}>
           <Resizable
@@ -68,6 +69,7 @@ export default class ResizableAndMovable extends Component {
              onTouchStart={onTouchStart}
              onResizeStart={this.onResizeStart.bind(this)}
              onResize={this.props.onResize}
+             isResizable={{x:!this.props.preview, y:!this.props.preview, xy:!this.props.preview}}
              onResizeStop={this.onResizeStop.bind(this)}
              width={start.width}
              height={start.height}

@@ -28,7 +28,7 @@ module.exports = React.createClass({
 			borderRadius: E.borderRadius.sm,
 			boxShadow: !this.props.preview ? '0 2px 3px rgba(0, 0, 0, 0.075), 0 0 0 1px rgba(0,0,0,0.1)':null,
 			marginBottom: E.spacing.md,
-			padding: E.spacing.md,
+			padding: '1px',
 			wordBreak:'break-all',
 			height:'100%',
 			'overflow':'hidden',
@@ -48,8 +48,8 @@ module.exports = React.createClass({
 		 preview={this.props.preview}
          start={this.props.initPos}
          customStyle={{}}
-         minWidth={200}
-         minHeight={200}
+         minWidth={50}
+         minHeight={50}
          maxWidth={800}
          maxHeight={800}
          //onResizeStart={() => console.log('resize start')}
@@ -71,7 +71,7 @@ module.exports = React.createClass({
        	 }} 
          >
         <div {...this.props} onMouseEnter={this.mouseOver} onMouseLeave={this.mouseOut} style={Object.assign(style, this.props.style)}>
-			 <div dangerouslySetInnerHTML={{__html: this.props.dom}} />
+			 <img draggable='false' style={{width:'100%',height:'100%'}} src={this.props.dom} />
 			{!this.props.preview ? 
         	renderEle
         	: null}
